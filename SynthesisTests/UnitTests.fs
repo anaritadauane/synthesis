@@ -13,7 +13,6 @@ TO DO TESTING, but it is convenient for this prac.
 
 [<Test>]
 let ``abelar`` () =
-    abelar 0 |> should equal false
     abelar 12 |> should equal false
     abelar 13 |> should equal false
     abelar 25 |> should equal false

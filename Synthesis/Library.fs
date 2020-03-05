@@ -1,25 +1,40 @@
 ﻿module Synthesis
 
-let abelar _ =
-    failwith "Not implemented"
+let abelar n =
+    (n > 12) && (n < 3097) && (n % 12 = 0)
 
-let area _ _ =
-    failwith "Not implemented"
+let area b h =
+    match b < 0.0 ||     h < 0.0 with 
+    | true -> failwith "The values are negative"
+    | false -> b/2.0 * h 
 
-let zollo _ =
-    failwith "Not implemented"
+let zollo x =
+    match x < 0 with 
+    | true -> x * (-1)
+    |false -> x * 2 
 
-let min _ _ =
-    failwith "Not implemented"
+let min x y =
+    match x < y with 
+    |true -> x
+    |false -> y
 
-let max _ _ =
-    failwith "Not implemented"
+let max z x =
+    match x > z with
+    |true -> x
+    |false -> z 
 
-let ofTime _ _ _ =
-    failwith "Not implemented"
+let ofTime h m s = (h * 3600) + (m * 60) + s                                                                                                                                     
 
-let toTime _ =
-    failwith "Not implemented"
+
+let toTime s = 
+    match s < 0 with 
+    | true -> (0,0,0)
+    | false -> 
+    let h = s / 3600
+    let m = (s % 3600) / 60 
+    let snd =  (s % 3600) % 60 
+    (h,m,snd)
+    
 
 let digits _ =
     failwith "Not implemented"
