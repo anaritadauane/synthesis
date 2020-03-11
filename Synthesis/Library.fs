@@ -4,7 +4,7 @@ let abelar n =
     (n > 12) && (n < 3097) && (n % 12 = 0)
 
 let area b h =
-    match b < 0.0 ||     h < 0.0 with 
+    match b < 0.0 || h < 0.0 with 
     | true -> failwith "The values are negative"
     | false -> b/2.0 * h 
 
@@ -36,14 +36,22 @@ let toTime s =
     (h,m,snd)
     
 
-let digits _ =
-    failwith "Not implemented"
+let digits d =
+        let rec count n =
+            match n < 10 && n > -10 with 
+            | false -> count(n/10)  + 1
+            | true -> 1
+        count d
+    
 
 let minmax _ =
     failwith "Not implemented"
 
-let isLeap _ =
-    failwith "Not implemented"
+let isLeap year = match year >= 1582 with 
+                  | true -> 
+                        match year % 4 = 0 && year % 100 <> 0 || year % 400 = 0 with 
+                        | false -> false | true -> true
+                  | false -> failwith "The year is not a leap year"
 
 let month _ =
     failwith "Not implemented"
