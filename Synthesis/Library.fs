@@ -53,8 +53,19 @@ let isLeap year = match year >= 1582 with
                         | false -> false | true -> true
                   | false -> failwith "The year is not a leap year"
 
-let month _ =
-    failwith "Not implemented"
+let month y = match y < 1 ||  y > 12 with 
+              | false -> 
+                        match y  with 
+                        | 1 -> ("January", 31)
+                        | 2 -> ("February", 28)
+                        | 3 -> ("March", 31) | 4 -> ("April", 30) | 5 -> ("May", 31)
+                        | 6 -> ("June", 30) | 7 -> ("July", 31) | 8 -> ("August", 31) | 9 -> ("September", 30)
+                        | 10 -> ("October", 31)
+                        | 11 -> ("November", 30)
+                        | 12 -> ("December", 31)
+              | true -> failwith "The year does not exit"
+
+    
 
 let toBinary _ =
     failwith "Not implemented"
