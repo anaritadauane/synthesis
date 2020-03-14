@@ -44,31 +44,39 @@ let digits d =
         count d
     
 
-let minmax _ =
-    failwith "Not implemented"
+let minmax mn =
+              match mn with 
+              |(a, b, c , d) -> min (min a b) (min c d), max (max a b) (max c d)
+              |_ -> failwith "Wau"
 
-let isLeap year = match year >= 1582 with 
+let isLeap year = 
+                  match year >= 1582 with 
                   | true -> 
                         match year % 4 = 0 && year % 100 <> 0 || year % 400 = 0 with 
                         | false -> false | true -> true
                   | false -> failwith "The year is not a leap year"
 
-let month y = match y < 1 ||  y > 12 with 
+let month y = 
+              match y < 1 ||  y > 12 with 
               | false -> 
                         match y  with 
-                        | 1 -> ("January", 31)
-                        | 2 -> ("February", 28)
-                        | 3 -> ("March", 31) | 4 -> ("April", 30) | 5 -> ("May", 31)
-                        | 6 -> ("June", 30) | 7 -> ("July", 31) | 8 -> ("August", 31) | 9 -> ("September", 30)
-                        | 10 -> ("October", 31)
-                        | 11 -> ("November", 30)
-                        | 12 -> ("December", 31)
+                        | 1 -> ("January", 31) | 2 -> ("February", 28)| 3 -> ("March", 31) | 4 -> ("April", 30) 
+                        | 5 -> ("May", 31) | 6 -> ("June", 30) | 7 -> ("July", 31) | 8 -> ("August", 31) 
+                        | 9 -> ("September", 30)| 10 -> ("October", 31) | 11 -> ("November", 30) | 12 -> ("December", 31)
               | true -> failwith "The year does not exit"
 
     
 
-let toBinary _ =
-    failwith "Not implemented"
+let toBinary tb =
+               
+               match tb < 0 with 
+               | true -> failwith "A negative integer has been supplied"
+               | false -> 
+                       let rec count n a= 
+                         match n = 0 with 
+                         | true -> a
+                         | false -> count(n /2) (string(n%2) + a)
+                       count  tb  ""
 
 let bizFuzz _ =
     failwith "Not implemented"
@@ -76,5 +84,19 @@ let bizFuzz _ =
 let monthDay _ _ =
     failwith "Not implemented"
 
-let coord _ =
-    failwith "Not implemented"
+let sqrt n =
+   let rec calculate guess i =
+    match i with
+    | 10 -> guess
+    | _ ->
+         let g = (guess + n/guess) / 2.0
+         calculate g (i+1)
+   match n <= 0.0 with
+   | true -> failwith "Impossibru!"
+   | _ ->
+         calculate (n/2.0) 0
+
+
+
+let coord a =
+  failwith "Not implemented"
