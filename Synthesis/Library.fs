@@ -67,19 +67,52 @@ let month y =
 
     
 
-let toBinary tb =
-               
+let toBinary tb = 
                match tb < 0 with 
                | true -> failwith "A negative integer has been supplied"
                | false -> 
-                       let rec count n a= 
-                         match n = 0 with 
-                         | true -> a
-                         | false -> count(n /2) (string(n%2) + a)
-                       count  tb  ""
+                         match tb = 0 with 
+                         | true -> "0"
+                         | false ->
+                               let rec count n a= 
+                                 match n = 0 with 
+                                 | true -> a
+                                 | false -> count(n /2) (string(n%2) + a)
+                               count  tb  ""
 
-let bizFuzz _ =
-    failwith "Not implemented"
+let bizFuzz y = 
+              let rec count n  =  
+                  match y > 1 with 
+                  | false -> 0
+                  | true ->
+                          
+                        match n % 3 = 0 with 
+                        | true -> 1 + count(n - 1) 
+                        | false -> count (n - 1)
+
+              let rec count5 n  =  
+                  match y > 1 with 
+                  | false -> 0
+                  | true ->
+                          
+                        match n % 5 = 0 with 
+                        | true -> count(n - 1) + 1
+                        | false -> 0
+
+              let rec count35 n  =  
+                  match y > 1 with 
+                  | false -> 0
+                  | true ->
+                          
+                        match n % 3 = 0 && n % 5 = 0 with 
+                        | true -> count(n - 1) + 1
+                        | false -> 0
+
+       
+              (count y  , count5 y, count35 y )   
+              
+
+
 
 let monthDay _ _ =
     failwith "Not implemented"
